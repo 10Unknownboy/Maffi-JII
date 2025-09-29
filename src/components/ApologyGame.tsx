@@ -16,17 +16,17 @@ const SORRY_IMAGES = [sorry1, sorry2, sorry3, sorry4, sorry5, sorry6];
 
 const BUTTON_TEXTS = [
   "NOH, ABHI BHI GUSSA HUU😡",
-  "Arey maaf kar do yar",
-  "Plwseeee maaf ker duuuu👉🏻👈🏻",
-  "PLLLLSUEEE maaf kl du naa😭",
+  "Arey\n maaf kar do yar",
+  "Plwseeee\n maaf ker duuuu👉🏻👈🏻",
+  "PLLLLSUEEE\n maaf kl du naa😭",
   "😭😭😭😭",
-  "AREYYYYYYYYYYY AB KER BHI DDO YR😭😭",
-  "Ab toh ker do dehko itni sari button laga di h",
+  "AREYYYYYYYYYYY\n AB KER BHI DDO YR😭😭",
+  "Ab toh ker do\ndehko itni sari button laga di h",
   "HAWW abhi tak nhi kiya😭",
-  "theek h fir mai oor button lagata rahu ga",
-  "AOOOOO MOADUIIIIII MAAFF KERR DEEEE😭",
-  "BAS thok gya mai ab loop laga rha",
-  "Please please please please maaf ker do😭😭😭"
+  "theek h fir mai\n oor button lagata rahu ga",
+  "AOOOOO MOADUIIIIII\n MAAFF KERR DEEEE😭",
+  "BAS thok gya mai\n ab loop laga rha",
+  "Please please please\n please maaf ker do😭😭😭"
 ];
 
 export default function ApologyGame() {
@@ -70,23 +70,26 @@ export default function ApologyGame() {
       setButtonClickCount(buttonClickCount + 1);
     }
     
-    const newX = Math.random() * 85 + 5;
-    const newY = Math.random() * 80 + 10;
+    // Generate random position for the button (much farther bounces)
+    const newX = Math.random() * 85 + 5; // 5-90% of screen width
+    const newY = Math.random() * 80 + 10; // 10-90% of screen height
     setButtonPosition({ x: newX, y: newY });
     
+    // Spawn multiple floating emojis near button (cumulative effect)
     const baseEmojiCount = 4;
     const additionalEmojis = buttonClickCount;
     const totalEmojis = baseEmojiCount + additionalEmojis;
     
     const newEmojis = Array.from({ length: totalEmojis }, (_, i) => {
       const emojiId = Date.now() + i;
-      const emojiX = newX + (Math.random() * 20 - 10);
-      const emojiY = newY + (Math.random() * 20 - 10);
+      const emojiX = buttonPosition.x + (Math.random() * 20 - 10);
+      const emojiY = buttonPosition.y + (Math.random() * 20 - 10);
       return { id: emojiId, x: emojiX, y: emojiY };
     });
     
     setFloatingEmojis(prev => [...prev, ...newEmojis]);
     
+    // Remove emojis after animation
     setTimeout(() => {
       setFloatingEmojis(prev => prev.filter(emoji => !newEmojis.find(newEmoji => newEmoji.id === emoji.id)));
     }, 2000);
@@ -98,6 +101,7 @@ export default function ApologyGame() {
   if (gamePhase === 'hitting') {
     return (
       <div className="min-h-screen bg-background/80 backdrop-blur-sm flex flex-col items-center justify-center p-8 relative overflow-hidden">
+        {/* Floating sad emojis background */}
         <div className="absolute inset-0 pointer-events-none">
           {Array.from({ length: 10 }).map((_, i) => (
             <div
@@ -115,8 +119,7 @@ export default function ApologyGame() {
         </div>
         
         <div className="text-center space-y-8 z-10">
-          {/* Decreased font size from 4xl to 3xl */}
-          <h1 className="text-3xl font-bold text-primary mb-8">
+          <h1 className="text-4xl font-bold text-primary mb-8">
             Hit him as harder u can.
           </h1>
           
@@ -154,6 +157,7 @@ export default function ApologyGame() {
   if (gamePhase === 'evil') {
     return (
       <div className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-destructive/10 to-destructive/20">
+        {/* Evil emoji background */}
         <div className="absolute inset-0 text-4xl leading-none overflow-hidden">
           {Array.from({ length: 30 }).map((_, i) => (
             <span 
@@ -170,8 +174,7 @@ export default function ApologyGame() {
           ))}
         </div>
         <div className="z-20 text-center bg-black/50 p-8 rounded-3xl backdrop-blur-sm">
-          {/* Decreased font size from 6xl to 5xl */}
-          <h1 className="text-5xl sm:text-6xl font-black text-white animate-pulse drop-shadow-2xl">
+          <h1 className="text-6xl sm:text-8xl font-black text-white animate-pulse drop-shadow-2xl">
             PHEL DALA MANGU KO
           </h1>
         </div>
@@ -182,6 +185,7 @@ export default function ApologyGame() {
   if (gamePhase === 'pleading') {
     return (
       <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
+        {/* Sad emoji background */}
         <div className="absolute inset-0 text-4xl leading-none overflow-hidden opacity-20">
           {Array.from({ length: 150 }).map((_, i) => (
             <span 
@@ -197,9 +201,8 @@ export default function ApologyGame() {
           ))}
         </div>
         <div className="z-10 text-center fade-in">
-          {/* Decreased font size from 4xl to 3xl */}
-          <h1 className="text-3xl font-bold text-primary mb-8 px-4">
-            Ab toh itna maar liya h ab toh maaf ker do😭😭
+          <h1 className="text-4xl font-bold text-primary mb-8 px-4">
+            Ab toh itna maar liya h<br> ab toh maaf ker do😭😭
           </h1>
         </div>
       </div>
@@ -209,6 +212,7 @@ export default function ApologyGame() {
   if (gamePhase === 'buttons') {
     return (
       <div className="min-h-screen flex items-center justify-center relative overflow-hidden p-8">
+        {/* Sad emoji background */}
         <div className="absolute inset-0 text-4xl leading-none overflow-hidden opacity-20">
           {Array.from({ length: 150 }).map((_, i) => (
             <span 
@@ -225,11 +229,11 @@ export default function ApologyGame() {
         </div>
         
         <div className="z-10 text-center space-y-8 fade-in">
-          {/* Decreased font size from 4xl to 3xl */}
-          <h1 className="text-3xl font-bold text-primary mb-8 px-4">
+          <h1 className="text-4xl font-bold text-primary mb-8 px-4">
             Ab toh itna maar liya h ab toh maaf ker do😭😭
           </h1>
           
+          {/* Right-aligned forgive button - larger */}
           <div className="fixed right-8 top-1/2 transform -translate-y-1/2">
             <Button 
               onClick={handleForgiveButton}
@@ -241,6 +245,7 @@ export default function ApologyGame() {
             </Button>
           </div>
           
+          {/* Moving angry button with fiery effect - slightly smaller than forgive button */}
           <Button 
             onClick={handleAngryButton}
             variant="destructive"
@@ -258,6 +263,7 @@ export default function ApologyGame() {
             {currentButtonText}
           </Button>
           
+          {/* Floating emojis */}
           {floatingEmojis.map(emoji => (
             <div
               key={emoji.id}
