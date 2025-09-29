@@ -211,7 +211,7 @@ export default function ApologyGame() {
 
   if (gamePhase === 'buttons') {
     return (
-      <div className="min-h-screen relative overflow-hidden p-8">
+      <div className="min-h-screen flex items-center justify-center relative overflow-hidden p-8">
         {/* Sad emoji background */}
         <div className="absolute inset-0 text-4xl leading-none overflow-hidden opacity-20">
           {Array.from({ length: 150 }).map((_, i) => (
@@ -224,60 +224,60 @@ export default function ApologyGame() {
               }}
             >
               {['🤕', '🥲', '🥺'][i % 3]}
-           </span>
+            </span>
           ))}
         </div>
-      
-        {/* Fixed top text and vertical buttons */}
-        <div className="fixed top-4 left-0 right-0 z-10 text-center fade-in px-4 max-w-md mx-auto">
-          <h1 className="text-4xl font-bold text-primary mb-8">
+        
+        <div className="z-10 text-center space-y-8 fade-in">
+          <h1 className="text-4xl font-bold text-primary mb-8 px-4">
             Ab toh itna maar liya h ab toh maaf ker do😭😭
           </h1>
           
-          <div className="flex flex-col space-y-6 items-center">
+          {/* Right-aligned forgive button - larger */}
+          <div className="fixed right-8 top-1/2 transform -translate-y-1/2">
             <Button 
               onClick={handleForgiveButton}
               variant="default"
               size="lg"
-              className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white font-bold py-6 px-16 text-2xl shadow-2xl w-full max-w-xs"
+              className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white font-bold py-8 px-16 text-2xl shadow-2xl"
             >
               JA Maaf kiya
             </Button>
-  
-            <Button 
-              onClick={handleAngryButton}
-              variant="destructive"
-              size="lg"
-              className={cn(
-                "font-bold py-6 px-12 text-xl transition-all duration-300 bounce-animation fiery-button",
-                "hover:scale-105 shadow-2xl w-full max-w-xs"
-              )}
-              style={{
-                position: 'relative',
-                left: 'auto',
-                top: 'auto',
-                transform: 'none'
-              }}
-            >
-              {currentButtonText}
-            </Button>
           </div>
-        </div>
-              
-        {/* Floating emojis */}
-        {floatingEmojis.map(emoji => (
-          <div
-            key={emoji.id}
-            className="absolute text-4xl pointer-events-none floating-emoji opacity-70"
+          
+          {/* Moving angry button with fiery effect - slightly smaller than forgive button */}
+          <Button 
+            onClick={handleAngryButton}
+            variant="destructive"
+            size="lg"
+            className={cn(
+              "absolute font-bold py-6 px-12 text-xl transition-all duration-300 bounce-animation fiery-button",
+              "hover:scale-105 shadow-2xl"
+            )}
             style={{
-              left: `${emoji.x}%`,
-              top: `${emoji.y}%`,
+              left: `${buttonPosition.x}%`,
+              top: `${buttonPosition.y}%`,
               transform: 'translate(-50%, -50%)'
             }}
           >
-            😭
-          </div>
-        ))}
+            {currentButtonText}
+          </Button>
+          
+          {/* Floating emojis */}
+          {floatingEmojis.map(emoji => (
+            <div
+              key={emoji.id}
+              className="absolute text-4xl pointer-events-none floating-emoji opacity-70"
+              style={{
+                left: `${emoji.x}%`,
+                top: `${emoji.y}%`,
+                transform: 'translate(-50%, -50%)'
+              }}
+            >
+              😭
+            </div>
+          ))}
+        </div>
       </div>
     );
   }
