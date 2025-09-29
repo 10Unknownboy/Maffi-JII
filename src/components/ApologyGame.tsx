@@ -228,22 +228,6 @@ export default function ApologyGame() {
           ))}
         </div>
         
-        <div className="fixed top-4 left-0 right-0 z-10 text-center fade-in px-4 max-w-md mx-auto">
-          <h1 className="text-4xl font-bold text-primary mb-8">
-            Ab toh itna maar liya h ab toh maaf ker do😭😭
-          </h1>
-
-          <div className="flex flex-col space-y-6 items-center">
-            <Button 
-              onClick={handleForgiveButton}
-              variant="default"
-              size="lg"
-            className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white font-bold py-6 px-16 text-2xl shadow-2xl w-full max-w-xs"
-          >
-            JA Maaf kiya
-          </Button>
-        </div>
-
         <div className="z-10 text-center space-y-8 fade-in">
           <h1 className="text-4xl font-bold text-primary mb-8 px-4">
             Ab toh itna maar liya h ab toh maaf ker do😭😭
