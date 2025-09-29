@@ -200,8 +200,8 @@ export default function ApologyGame() {
             </span>
           ))}
         </div>
-        <div className="z-10 text-center fade-in">
-          <h1 className="text-4xl font-bold text-primary mb-8 px-4">
+        <div className="z-10 text-center fade-in fixed top-4 left-0 right-0 mx-auto max-w-xl px-4">
+          <h1 className="text-4xl font-bold text-primary mb-8">
             Ab toh itna maar liya h ab toh maaf ker do😭😭
           </h1>
         </div>
