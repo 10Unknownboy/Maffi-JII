@@ -73,10 +73,10 @@ export default function CelebrationPage() {
       {/* Main celebration text */}
       <div className="text-center z-10 space-y-8">
         <h1 className="text-6xl sm:text-8xl font-black text-white animate-bounce tracking-wider">
-          YYYEEEE
+          YYYEEEEEEEE
         </h1>
         <h2 className="text-5xl sm:text-7xl font-black text-accent animate-pulse">
-          PARTYY
+          PARTYYYY
         </h2>
         
         {/* Message that appears after 2 seconds */}
