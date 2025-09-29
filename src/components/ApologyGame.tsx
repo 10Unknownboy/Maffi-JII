@@ -16,17 +16,17 @@ const SORRY_IMAGES = [sorry1, sorry2, sorry3, sorry4, sorry5, sorry6];
 
 const BUTTON_TEXTS = [
   "NOH, ABHI BHI GUSSA HUU😡",
-  "Arey\n maaf kar do yar",
-  "Plwseeee\n maaf ker duuuu👉🏻👈🏻",
-  "PLLLLSUEEE\n maaf kl du naa😭",
+  "Arey maaf kar do yar",
+  "Plwseeee maaf ker duuuu👉🏻👈🏻",
+  "PLLLLSUEEE maaf kl du naa😭",
   "😭😭😭😭",
-  "AREYYYYYYYYYYY\n AB KER BHI DDO YR😭😭",
-  "Ab toh ker do\ndehko itni sari button laga di h",
+  "AREYYYYYYYYYYY AB KER BHI DDO YR😭😭",
+  "Ab toh ker do dehko itni sari button laga di h",
   "HAWW abhi tak nhi kiya😭",
-  "theek h fir mai\n oor button lagata rahu ga",
-  "AOOOOO MOADUIIIIII\n MAAFF KERR DEEEE😭",
-  "BAS thok gya mai\n ab loop laga rha",
-  "Please please please\n please maaf ker do😭😭😭"
+  "theek h fir mai oor button lagata rahu ga",
+  "AOOOOO MOADUIIIIII MAAFF KERR DEEEE😭",
+  "BAS thok gya mai ab loop laga rha",
+  "Please please please please maaf ker do😭😭😭"
 ];
 
 export default function ApologyGame() {
@@ -202,7 +202,7 @@ export default function ApologyGame() {
         </div>
         <div className="z-10 text-center fade-in">
           <h1 className="text-4xl font-bold text-primary mb-8 px-4">
-            Ab toh itna maar liya h<br> ab toh maaf ker do😭😭
+            Ab toh itna maar liya h ab toh maaf ker do😭😭
           </h1>
         </div>
       </div>
